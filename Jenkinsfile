@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent Slave
     stages {
         stage ('build') {
             steps {
-                echo "Building"
+                sh "echo 'Building'"
             }
         }
         stage ('test') {
