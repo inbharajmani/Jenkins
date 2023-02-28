@@ -2,7 +2,7 @@ pipeline {
     agent {
       label 'Slave'
     }
-    properties([
+    options([
         parameters([
             booleanParam(defaultValue: true, name: 'Deploy'),
             choice(choices: ['Dev', 'Stage', 'Prod'], name: 'Environment'),
