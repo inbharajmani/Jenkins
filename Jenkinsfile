@@ -3,16 +3,10 @@ pipeline {
       label 'Slave'
     }
     stages {
-        stage ('checkout') {
-            steps {
-                script {
-                    git branch: 'main', url: 'https://github.com/inbharajmani/Jenkins.git'
-                }
-            }
-        }
         stage ('build') {
             steps {
                 sh "echo 'Building'"
+                sh "hostname"
             }
         }
         stage ('test') {
