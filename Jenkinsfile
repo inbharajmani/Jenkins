@@ -12,7 +12,7 @@ pipeline {
         stage ('build') {
             steps {
                 sh "echo 'Building'"
-                sh "hostname"
+                sh "echo ${params.Environment}"
             }
         }
         stage ('test') {
