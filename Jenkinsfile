@@ -22,7 +22,7 @@ pipeline {
         stage ('package') {
             steps {
                 echo "packaging"
-                sh " echo params.Deploy 'params.Environment' 'params.Key' 'MultilineKey' > artifact.txt"
+                sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
             }
         }
     }
