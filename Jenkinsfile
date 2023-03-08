@@ -12,7 +12,6 @@ pipeline {
         stage ('build') {
             steps {
                 sh "echo 'Building'"
-                sh "echo $Environment"
             }
         }
         stage ('test') {
@@ -23,7 +22,13 @@ pipeline {
         stage ('package') {
             steps {
                 echo "packaging"
+                sh " echo 'params.Deploy' 'params.Environment' 'params.Key' 'MultilineKey' > artifact.txt"
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'artifact.txt'
         }
     }
 }
