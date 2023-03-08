@@ -12,6 +12,10 @@ pipeline {
         stage ('build') {
             steps {
                 sh "echo 'Building'"
+                sh """
+                echo test > archivaltest.txt
+                zip archivaltest.zip archivaltest.txt
+                """
             }
         }
         stage ('test') {
