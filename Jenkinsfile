@@ -18,7 +18,7 @@ pipeline {
                 sh "echo $USER"
                 sh """
                 git reset --hard
-                git fetch origin master
+                git fetch origin main
                 git merge FETCH_HEAD
                 git show HEAD^
                 """
