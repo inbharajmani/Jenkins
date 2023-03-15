@@ -16,10 +16,6 @@ pipeline {
             steps {
                 sh "echo 'Building'"
                 sh "echo $USER"
-                sh "git reset --hard"
-                sh "git fetch origin main"
-                sh "git merge FETCH_HEAD"
-                sh "git show HEAD^"
                 // sh """
                 // echo test > archivaltest.txt
                 // zip archivaltest.zip archivaltest.txt
