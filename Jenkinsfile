@@ -30,11 +30,11 @@ pipeline {
                 }
             }
         }
-        stage ('test') {
-            steps {
-                echo "testing"
-            }
-        }
+        // stage ('test') {
+        //     steps {
+        //         echo "testing"
+        //     }
+        // }
         stage ('package') {
             steps {
                 echo "packaging"
