@@ -34,7 +34,6 @@ pipeline {
                     sh "echo 'test' > newfile"
                     sh "bash script.sh"
                 }
-                archiveArtifacts allowEmptyArchive: false, artifacts: "newfile"
                 }
             }
         }
