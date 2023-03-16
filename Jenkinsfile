@@ -30,18 +30,16 @@ pipeline {
                 script {
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
-                    sh "cat /etc/os-release"
-                    sh "echo 'test' > newfile"
                     sh "bash script.sh"
                 }
                 }
             }
         }
-        // stage ('test') {
-        //     steps {
-        //         echo "testing"
-        //     }
-        // }
+        stage ('test') {
+            steps {
+                echo "testing"
+            }
+        }
         stage ('package') {
             steps {
                 echo "packaging"
