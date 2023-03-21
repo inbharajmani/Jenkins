@@ -28,7 +28,7 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                docker.image("ubuntu:latest").inside(--rm-timeout=120){
+                docker.image("ubuntu:latest").inside("--rm-timeout=120"){
                     sh "hostname"
                     // sh "bash script.sh"
                 }
