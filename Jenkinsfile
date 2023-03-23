@@ -28,10 +28,12 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                docker.image("ubuntu:latest").inside(idleTimeout: 120){
+                boolean test = false
+                docker.image("ubuntu:latest").inside(){
                     sh "hostname"
-                    // sh "bash script.sh"
+                    sh "bash script.sh"
                 }
+                echo $test
                 }
             }
         }
