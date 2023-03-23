@@ -31,7 +31,7 @@ pipeline {
                 def SnapshotPushed = 1
                 docker.image("ubuntu:latest").inside(){
                     SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
-                    echo ${SnapshotPushed}
+                    echo "${SnapshotPushed}"
                 }
                 }
             }
