@@ -1,6 +1,5 @@
 #!/bin/bash
 pwd
-if [[ $? -eq 0 ]]; then{
+if [[ $? -eq 0 ]]; then
     test = true
-}
 fi
