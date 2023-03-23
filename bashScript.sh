@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o
+set -e
 pw
 pwd
 pw
