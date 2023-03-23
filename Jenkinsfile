@@ -32,8 +32,8 @@ pipeline {
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
                     sh "bash bashScript.sh"
+                    sh 'echo ${SnapshotPushed}'
                 }
-                sh 'echo ${SnapshotPushed}'
                 }
             }
         }
