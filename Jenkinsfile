@@ -28,12 +28,12 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                boolean test = false
+                boolean SnapshotPushed = false
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
                     sh "bash bashScript.sh"
                 }
-                sh 'echo $test'
+                sh 'echo $SnapshotPushed'
                 }
             }
         }
