@@ -31,7 +31,7 @@ pipeline {
                 env.SnapshotPushed = false
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
-                    sh "bash bashScript.sh '${SnapshotPushed}'"
+                    env.SnapshotPushed = sh "bash bashScript.sh '${SnapshotPushed}'"
                     echo "${SnapshotPushed}"
                 }
                 }
