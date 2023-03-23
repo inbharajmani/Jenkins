@@ -31,7 +31,7 @@ pipeline {
                 boolean test = false
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
-                    sh "bash script.sh"
+                    sh "bashScript.sh"
                 }
                 echo $test
                 }
