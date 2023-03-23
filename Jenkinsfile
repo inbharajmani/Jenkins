@@ -28,10 +28,10 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                env.SnapshotPushed = false
+                SnapshotPushed = false
                 docker.image("ubuntu:latest").inside(){
                     sh "hostname"
-                    env.SnapshotPushed = sh "bash bashScript.sh '${SnapshotPushed}'"
+                    sh "bash bashScript.sh"
                     echo "${SnapshotPushed}"
                 }
                 }
