@@ -1,5 +1,5 @@
 #!/bin/bash
 pwd
 if [[ $? -eq 0 ]]; then
-    env.SnapshotPushed = true
+    SnapshotPushed=true
 fi
