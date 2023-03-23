@@ -33,7 +33,7 @@ pipeline {
                     sh "hostname"
                     sh "bash bashScript.sh"
                 }
-                sh 'echo $SnapshotPushed'
+                sh 'echo ${SnapshotPushed}'
                 }
             }
         }
