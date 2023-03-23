@@ -30,8 +30,11 @@ pipeline {
                 script {
                 SnapshotPushed = false
                 docker.image("ubuntu:latest").inside(){
-                    sh "hostname"
-                    sh "bash bashScript.sh"
+                    sh """
+                    hostname \
+                    bash bashScript.sh
+                    pwd
+                    """
                 }
                 }
             }
