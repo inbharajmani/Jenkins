@@ -33,7 +33,7 @@ pipeline {
                     sh "hostname"
                     sh "bash bashScript.sh"
                 }
-                echo $test
+                sh 'echo $test'
                 }
             }
         }
