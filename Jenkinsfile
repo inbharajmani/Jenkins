@@ -28,11 +28,17 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                def SnapshotPushed = 1
-                docker.image("ubuntu:latest").inside(){
-                    SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
+                // def SnapshotPushed = 1
+                // docker.image("ubuntu:latest").inside(){
+                //     SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
+                // }
+                // sh "echo $SnapshotPushed"
+                retry(2){
+                    sh "hostname"
+                    sh "pw"
+                    sh "ip a"
+                    sh "pwd"
                 }
-                sh "echo $SnapshotPushed"
                 }
             }
         }
