@@ -34,7 +34,7 @@ pipeline {
                 // }
                 // sh "echo $SnapshotPushed"
                 try {
-                    SnapshotPushed = sh(returnStatus: true, script: """ hostname
+                    SnapshotPushed = sh(returnStatus: true, script: """ hostnam
                     pwd """)
                 }
                 catch (Exception e){
