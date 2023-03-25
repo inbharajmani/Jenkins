@@ -28,16 +28,25 @@ pipeline {
                 // zip archivaltest.zip archivaltest.txt
                 // """
                 script {
-                // def SnapshotPushed = 1
+                def SnapshotPushed = 1
                 // docker.image("ubuntu:latest").inside(){
                 //     SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
                 // }
                 // sh "echo $SnapshotPushed"
-                retry(2){
-                    sh "hostname"
-                    sh "pw"
-                    sh "ip a"
-                    sh "pwd"
+                try {
+                    SnapshotPushed = sh(returnStatus: true, script: """ hostname
+                    pwd """)
+                }
+                catch (Exception e){
+                    if(SnapshotPushed != 0) {
+                        echo "Exception occured check pipeline errors"
+                        currentBuild.result = 'Failure'
+                        throw e
+                    }
+                    else {
+                        echo "IOException occured due to Docker rm issue. Continuing pipeline..."
+                        currentBuild.result = 'SUCCESS'
+                    }
                 }
                 }
             }
