@@ -53,7 +53,7 @@ pipeline {
                 // }
                 sh "bash bashScript.sh"
                 echo "$currentBuild.fullProjectName"
-                copyArtifacts(projectName: 'Jenkins/main', selector: lastSuccessful(), 
+                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful(), 
 target: 'artifact')
             }
         }
