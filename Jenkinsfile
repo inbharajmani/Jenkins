@@ -52,7 +52,7 @@ pipeline {
                 // }
                 // }
                 sh "bash bashScript.sh"
-                copyArtifacts(projectName: 'Jenkins', selector: lastSuccessful(), 
+                copyArtifacts(projectName: 'Jenkins/main', selector: lastSuccessful(), 
 target: 'artifact')
             }
         }
