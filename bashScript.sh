@@ -1,5 +1,3 @@
 #!/bin/bash
-set -e
-pw
-pwd
-pw
+mkdir artifact
+date >> artifaact/test.txt

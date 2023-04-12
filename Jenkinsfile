@@ -1,7 +1,7 @@
 pipeline {
-    agent {
-      label 'Slave'
-    }
+    // agent {
+    //   label 'Slave'
+    // }
     // triggers {
     //     cron '* * * * *'
     // }
@@ -14,8 +14,8 @@ pipeline {
     stages {
         stage ('build') {
             steps {
-                sh "echo 'Building'"
-                sh "echo $USER"
+                sh "echo Building"
+                // sh "echo $USER"
                 // sh """
                 // git reset --hard
                 // git fetch origin main
@@ -27,29 +27,32 @@ pipeline {
                 // echo test > archivaltest.txt
                 // zip archivaltest.zip archivaltest.txt
                 // """
-                script {
-                def SnapshotPushed = 1
-                // docker.image("ubuntu:latest").inside(){
-                //     SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
+                // script {
+                // def SnapshotPushed = 1
+                // // docker.image("ubuntu:latest").inside(){
+                // //     SnapshotPushed = sh(returnStatus: true, script: 'bash bashScript.sh')
+                // // }
+                // // sh "echo $SnapshotPushed"
+                // try {
+                //     SnapshotPushed = sh(returnStatus: true, script: """ hostname
+                //     pw """)
+                //     ech
                 // }
-                // sh "echo $SnapshotPushed"
-                try {
-                    SnapshotPushed = sh(returnStatus: true, script: """ hostname
-                    pw """)
-                    ech
-                }
-                catch (Exception e){
-                    if(SnapshotPushed != 0) {
-                        echo "Exception occured check pipeline errors"
-                        currentBuild.result = 'Failure'
-                        throw e
-                    }
-                    else {
-                        echo "IOException occured due to Docker rm issue. Continuing pipeline..."
-                        currentBuild.result = 'SUCCESS'
-                    }
-                }
-                }
+                // catch (Exception e){
+                //     if(SnapshotPushed != 0) {
+                //         echo "Exception occured check pipeline errors"
+                //         currentBuild.result = 'Failure'
+                //         throw e
+                //     }
+                //     else {
+                //         echo "IOException occured due to Docker rm issue. Continuing pipeline..."
+                //         currentBuild.result = 'SUCCESS'
+                //     }
+                // }
+                // }
+                bash bashScript.sh
+//                 copyArtifacts(projectName: 'Jenkins', selector: lastSuccessful(), 
+// target: 'artifact')
             }
         }
         stage ('test') {
@@ -64,9 +67,9 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: 'artifact.txt'
-    //     }
-    // }
+    post {
+        always {
+            archiveArtifacts artifacts: 'artifact'
+        }
+    }
 }
