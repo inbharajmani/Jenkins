@@ -51,10 +51,10 @@ pipeline {
                 //     }
                 // }
                 // }
-                sh "bash bashScript.sh"
-                echo "$currentBuild.fullProjectName"
                 copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful(), 
 target: '.')
+                sh "bash bashScript.sh"
+                echo "$currentBuild.fullProjectName"
             }
         }
         stage ('test') {
