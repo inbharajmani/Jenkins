@@ -51,7 +51,7 @@ pipeline {
                 //     }
                 // }
                 // }
-                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful())
+                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', filter: 'artifact', selector: lastSuccessful())
                 sh "bash bashScript.sh"
                 echo "$currentBuild.fullProjectName"
             }
