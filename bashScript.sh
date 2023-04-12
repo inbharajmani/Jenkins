@@ -1,3 +1,3 @@
 #!/bin/bash
-mkdir artifact
-date >> artifact/test.txt
+mkdir coverity_output
+date >> coverity_output/test.txt

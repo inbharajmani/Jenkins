@@ -51,7 +51,7 @@ pipeline {
                 //     }
                 // }
                 // }
-                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', target: '/artifact', selector: lastSuccessful())
+                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful())
                 sh "bash bashScript.sh"
                 echo "$currentBuild.fullProjectName"
             }
@@ -70,7 +70,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'artifact/**/*'
+            archiveArtifacts artifacts: 'coverity_output/**/*'
         }
     }
 }
