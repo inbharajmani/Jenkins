@@ -70,7 +70,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'artifact'
+            archiveArtifacts artifacts: 'artifact/**/*'
         }
     }
 }
