@@ -53,8 +53,8 @@ pipeline {
                 // }
                 sh "bash bashScript.sh"
                 echo "$currentBuild.fullProjectName"
-//                 copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful(), 
-// target: 'artifact')
+                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful(), 
+target: 'artifact')
             }
         }
         stage ('test') {
