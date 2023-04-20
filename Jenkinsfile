@@ -1,8 +1,9 @@
+@Library('coverity_shared_lib@main') _
 pipeline {
-    agent any
-    // agent {
-    //   label 'Slave'
-    // }
+    // agent any
+    agent {
+      label 'Slave'
+    }
     // triggers {
     //     cron '* * * * *'
     // }
@@ -16,6 +17,11 @@ pipeline {
         stage ('build') {
             steps {
                 sh "echo Building"
+                script {
+                    withDockerContainer('nginx') {
+                        cov-configure("asdf","asd",["asd"])
+                    }
+                }
                 // sh "echo $USER"
                 // sh """
                 // git reset --hard
@@ -51,9 +57,9 @@ pipeline {
                 //     }
                 // }
                 // }
-                copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful())
-                sh "bash bashScript.sh"
-                echo "$currentBuild.fullProjectName"
+                // copyArtifacts(projectName: 'Folder/ArtifactCopyTest', selector: lastSuccessful())
+                // sh "bash bashScript.sh"
+                // echo "$currentBuild.fullProjectName"
             }
         }
         stage ('test') {
@@ -68,9 +74,9 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            archiveArtifacts artifacts: 'coverity_output/**/*'
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: 'coverity_output/**/*'
+    //     }
+    // }
 }
