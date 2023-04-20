@@ -19,7 +19,7 @@ pipeline {
                 sh "echo Building"
                 script {
                     withDockerContainer('nginx') {
-                        test("asdf")
+                        cov-configure("asdf","asda",["asd"])
                     }
                 }
                 // sh "echo $USER"
