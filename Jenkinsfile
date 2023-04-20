@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "echo Building"
                 script {
-                    withDockerContainer('nginx') {
+                    withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
                         cov_configure()
                     }
                 }
