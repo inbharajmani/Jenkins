@@ -21,6 +21,8 @@ pipeline {
                 sh """
                 echo Building
                 mkdir $test
+                name=$(hostname)
+                echo $name
                 """
                 // script {
                 //     withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
