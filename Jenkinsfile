@@ -21,7 +21,7 @@ pipeline {
                 sh """
                 echo Building
                 mkdir $test
-                name=$(hostname)
+                name=\$(hostname)
                 echo $name
                 """
                 // script {
