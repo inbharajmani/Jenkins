@@ -18,10 +18,10 @@ pipeline {
             steps {
                 script {
                 String test = "testvalue"
-                sh "echo Building"
-                sh '''
-                mkdir ${test}
-                '''
+                sh """
+                echo Building
+                mkdir $test
+                """
                 // script {
                 //     withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
                 //         cov_configure()
