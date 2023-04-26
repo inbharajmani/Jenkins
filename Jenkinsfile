@@ -17,13 +17,19 @@ pipeline {
         stage ('build') {
             steps {
                 script {
+                cleanWs()
                 String test = "testvalue"
                 sh """
                 echo Building
                 mkdir $test
-                name=\$(hostname)
-                echo $name
+                cd $test
+                echo "test\ntest" > test.txt
+                for i in \$(cat test.txt)
+                do
+                  echo "lines \$i"
+                done
                 """
+                
                 // script {
                 //     withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
                 //         cov_configure()
