@@ -16,12 +16,17 @@ pipeline {
     stages {
         stage ('build') {
             steps {
-                sh "echo Building"
                 script {
-                    withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
-                        cov_configure()
-                    }
-                }
+                String test = "testvalue"
+                sh "echo Building"
+                sh '''
+                mkdir ${test}
+                '''
+                // script {
+                //     withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
+                //         cov_configure()
+                //     }
+                // }
                 // sh "echo $USER"
                 // sh """
                 // git reset --hard
@@ -61,6 +66,7 @@ pipeline {
                 // sh "bash bashScript.sh"
                 // echo "$currentBuild.fullProjectName"
             }
+        }
         }
         stage ('test') {
             steps {
