@@ -1,4 +1,4 @@
-@Library('coverity_shared_lib@main') _
+// @Library('coverity_shared_lib@main') _
 pipeline {
     // agent any
     agent {
@@ -18,17 +18,19 @@ pipeline {
             steps {
                 script {
                 cleanWs()
-                String test = "testvalue"
-                sh """
-                echo Building
-                mkdir $test
-                cd $test
-                echo "test\ntest" > test.txt
-                for i in \$(cat test.txt)
-                do
-                  echo "lines \$i"
-                done
-                """
+                echo ${scm.branches[0].name}
+                // String test = "testvalue"
+                // sh """
+                //     echo Building
+                //     mkdir $test
+                //     cd $test
+                //     echo "test\ntest" > test.txt
+                //     temp=$(cat test.txt)
+                //     for i in \$(cat test.txt)
+                //     do
+                //       echo "lines \$i"
+                //     done
+                // """
                 
                 // script {
                 //     withDockerContainer('mcr.microsoft.com/windows/servercore:ltsc2022') {
