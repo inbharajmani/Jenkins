@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                 cleanWs()
-                echo $scm.branches[0].name
+                print(scm.branches[0].name)
                 // String test = "testvalue"
                 // sh """
                 //     echo Building
