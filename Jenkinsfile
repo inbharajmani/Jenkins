@@ -29,7 +29,7 @@ pipeline {
                     touch $idir/output/analysis-log.txt
                 """
                 sh "mv $idir/output/summary.txt $idir/output/analysis-log.txt $idir/"
-                zip zipFile: "${idir}.zip", dir: ${idir}, exclude: "$idir/tmp","$idir/output","$idir/emit" ,overwrite: true, archive : true
+                zip zipFile: "${idir}.zip", dir: ${idir}, exclude: "${idir}/tmp","${idir}/output","${idir}/emit" ,overwrite: true, archive : true
                 // String test = "testvalue"
                 // sh """
                 //     echo Building
