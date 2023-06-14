@@ -21,13 +21,13 @@ pipeline {
                 print(scm.branches[0].name)
                 String idir = "dir"
                 sh "mkdir -p $idir/output $idir/tmp  $idir/emit $idir/build_logs"
-                sh "mv $idir/output/summary.txt $idir/output/analysis-log.txt $idir/"
                 sh """ 
                     echo "test" > $idir/output/summary.txt
                     echo "test" > $idir/test.txt
                     echo "test" > $idir/build_logs/test.txt
                     echo "test" > $idir/emit/test.txt
                 """
+                sh "mv $idir/output/summary.txt $idir/output/analysis-log.txt $idir/"
                 zip zipFile: "${idir}.zip", dir: idir, exclude: "$idir/tmp","$idir/output","$idir/emit" ,overwrite: true, archive : true
                 // String test = "testvalue"
                 // sh """
