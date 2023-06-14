@@ -26,6 +26,7 @@ pipeline {
                     echo "test" > $idir/test.txt
                     echo "test" > $idir/build_logs/test.txt
                     echo "test" > $idir/emit/test.txt
+                    touch $idir/output/analysis-log.txt
                 """
                 sh "mv $idir/output/summary.txt $idir/output/analysis-log.txt $idir/"
                 zip zipFile: "${idir}.zip", dir: idir, exclude: "$idir/tmp","$idir/output","$idir/emit" ,overwrite: true, archive : true
