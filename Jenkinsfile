@@ -28,7 +28,7 @@ pipeline {
                     echo "test" > $idir/emit/test.txt
                     touch $idir/output/analysis-log.txt
                 """
-                zip zipFile: "${idir}.zip", dir: "$idir" , glob: "**/$idir/** , **/output/summary.txt", exclude: "**/tmp/** , **/output/** , **/emit/**", overwrite: true, archive: true
+                zip zipFile: "${idir}.zip", dir: "$idir" , glob: "**/* , **/output/summary.txt", exclude: "**/tmp/** , **/output/** , **/emit/**", overwrite: true, archive: true
                 // String test = "testvalue"
                 // sh """
                 //     echo Building
