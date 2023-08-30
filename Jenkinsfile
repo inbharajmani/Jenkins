@@ -105,7 +105,7 @@ pipeline {
                     def config = readJSON file: "./test.json"
                     env.releaseBranch = config.release
 
-                    if (env.releaseBranch == true){
+                    if (env.releaseBranch == "true"){
                         print "relase set"
                     }
                     else {
