@@ -96,7 +96,7 @@ pipeline {
         stage ('package') {
             steps {
                 script {
-                    print env.va
+                    print currentBuild.getTimeInMillis()
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
