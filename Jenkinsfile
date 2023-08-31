@@ -104,13 +104,11 @@ pipeline {
                 script {
                     def config = readJSON file: "./test.json"
                     env.releaseBranch = config.releases
-
-                    if (env.releaseBranch == "null"){
-                        print "relase set"
-                    }
-                    else {
-                        print "release not set"
-                    }
+                    def projectName = "adas_master"
+                    def repoName = "asda"
+                    def branchName = "master"
+                    def streamName = (env.releaseBranch == "null") ? "$projectName" : "${repoName}_${branchName}_${env.releaseBranch}"
+                    print streamName
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
