@@ -103,7 +103,6 @@ pipeline {
             steps {
                 script {
                     def config = readJSON file: "./test.json"
-                    env.releaseBranch = config.releases
                     def projectName = "adas_master"
                     def repoName = "asda"
                     def branchName = "master"
