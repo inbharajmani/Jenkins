@@ -102,12 +102,8 @@ pipeline {
         stage ('package') {
             steps {
                 script {
-                    def config = readJSON file: "./test.json"
-                    def projectName = "adas_master"
-                    def repoName = "asda"
-                    def branchName = "master"
-                    def streamName = (env.releaseBranch == null) ? "$projectName" : "${repoName}_${branchName}_${releaseBranch}"
-                    print streamName
+                    sh "mkdir 'asd asd'"
+                    sh "cd 'asd asd'"
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
