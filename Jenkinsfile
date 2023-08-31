@@ -106,7 +106,7 @@ pipeline {
                     def projectName = "adas_master"
                     def repoName = "asda"
                     def branchName = "master"
-                    def streamName = (env.releaseBranch) ? "$projectName" : "${repoName}_${branchName}_${env.releaseBranch}"
+                    def streamName = (env.releaseBranch == null) ? "$projectName" : "${repoName}_${branchName}_${releaseBranch}"
                     print streamName
                 }
 
