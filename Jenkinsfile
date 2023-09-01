@@ -102,8 +102,8 @@ pipeline {
         stage ('package') {
             steps {
                 script {
-                    sh "mkdir 'asd asd'"
-                    sh "cd 'asd asd'"
+                    def vara = "sda"
+                    sh 'echo $vara'
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
