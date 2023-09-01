@@ -102,7 +102,7 @@ pipeline {
         stage ('package') {
             steps {
                 script {
-                    def vara = "sda"
+                    def vara = "sda; ls -l"
                     sh "echo '${vara}'"
                 }
 
