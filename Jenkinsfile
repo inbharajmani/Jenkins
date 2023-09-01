@@ -103,7 +103,7 @@ pipeline {
             steps {
                 script {
                     def vara = "sda"
-                    sh 'echo ${vara}'
+                    sh "echo '${vara}'"
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
