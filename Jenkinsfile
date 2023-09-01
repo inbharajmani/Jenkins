@@ -107,7 +107,7 @@ pipeline {
                                                 usernameVariable: 'COVERITY_USERNAME',
                                                 passwordVariable: 'COVERITY_PASSWORD')
                                                 ]){
-                                                    sh "echo ${COVERITY_PASSWORD}"
+                                                    sh "echo '${COVERITY_PASSWORD}'"
                                                 }
                 }
 
