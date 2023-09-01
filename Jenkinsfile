@@ -106,8 +106,9 @@ pipeline {
                                                 credentialsId: 'coverity-ccf-user',
                                                 usernameVariable: 'COVERITY_USERNAME',
                                                 passwordVariable: 'COVERITY_PASSWORD')
-                                                ])
-                    sh "echo ${COVERITY_PASSWORD}"
+                                                ]){
+                                                    sh "echo ${COVERITY_PASSWORD}"
+                                                }
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
