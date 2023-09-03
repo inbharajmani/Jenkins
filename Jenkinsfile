@@ -102,13 +102,17 @@ pipeline {
         stage ('package') {
             steps {
                 script {
-                    withCredentials([usernamePassword(
-                                                credentialsId: 'coverity-ccf-user',
-                                                usernameVariable: 'COVERITY_USERNAME',
-                                                passwordVariable: 'COVERITY_PASSWORD')
-                                                ]){
-                                                    sh "echo '${COVERITY_PASSWORD}'"
-                                                }
+                    // withCredentials([usernamePassword(
+                    //                             credentialsId: 'coverity-ccf-user',
+                    //                             usernameVariable: 'COVERITY_USERNAME',
+                    //                             passwordVariable: 'COVERITY_PASSWORD')
+                    //                             ]){
+                    //                                 sh "echo '${COVERITY_PASSWORD}'"
+                    //                             }
+                    def codingStandardArgs, covAnalyzeArgs
+                    codingStandardArgs = covAnalyzeArgs = "zxcz"
+                    print codingStandardArgs
+                    print covAnalyzeArgs
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
