@@ -121,6 +121,9 @@ pipeline {
                     if (a == 1 && b == 4 && c == 3){
                         print "yes"
                     }
+                    if (env.BRANCH_NAME == null){
+                        print "yes"
+                    }
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
