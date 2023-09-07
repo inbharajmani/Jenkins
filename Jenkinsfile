@@ -116,7 +116,7 @@ pipeline {
                     sh "git remote show origin | grep HEAD"
                     sh "git rev-parse --abbrev-ref HEAD"
                     def a = 1
-                    def b = 2
+                    def b = 4
                     def c = 3
                     if (a == 1 && b == 2 && c == 3){
                         print "yes"
