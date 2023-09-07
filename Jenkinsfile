@@ -10,6 +10,9 @@ pipeline {
     agent {
       label 'Slave'
     }
+    options {
+        skipDefaultCheckout true
+    }
     // triggers {
     //     cron '* * * * *'
     // }
@@ -96,6 +99,7 @@ pipeline {
         // }
         stage ('test') {
             steps {
+                checkout scm
                 echo "testing"
             }
         }
@@ -109,10 +113,8 @@ pipeline {
                     //                             ]){
                     //                                 sh "echo '${COVERITY_PASSWORD}'"
                     //                             }
-                    def codingStandardArgs, covAnalyzeArgs
-                    codingStandardArgs = covAnalyzeArgs = "zxcz"
-                    print codingStandardArgs
-                    print covAnalyzeArgs
+                    sh "git remote show origin | grep HEAD"
+                    sh "git rev-parse --abbrev-ref HEAD"
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
