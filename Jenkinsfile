@@ -117,8 +117,8 @@ pipeline {
                     sh "git rev-parse --abbrev-ref HEAD"
                     def a = 1
                     def b = 4
-                    def c = 3
-                    if (a == 1 && b == 2 && c == 3){
+                    def c = 2
+                    if (a == 1 && b == 4 && c == 3){
                         print "yes"
                     }
                 }
