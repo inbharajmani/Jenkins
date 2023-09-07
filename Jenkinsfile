@@ -115,6 +115,12 @@ pipeline {
                     //                             }
                     sh "git remote show origin | grep HEAD"
                     sh "git rev-parse --abbrev-ref HEAD"
+                    def a = 1
+                    def b = 2
+                    def c = 3
+                    if (a == 1 && b == 2 && c == 3){
+                        print "yes"
+                    }
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
