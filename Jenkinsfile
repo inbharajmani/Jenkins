@@ -121,7 +121,7 @@ pipeline {
                     if (a == 1 && b == 4 && c == 3){
                         print "yes"
                     }
-                    if (env.BRANCH_NME == null){
+                    if (env.BRANCH_NME == "null"){
                         print "yes"
                     }
                 }
