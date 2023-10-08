@@ -96,8 +96,8 @@ pipeline {
         stage ('test') {
             steps {
                 checkout scm
-                Map jsonValues
                 script{
+                    Map jsonValues
                     jsonValues = readJSON file: "test.json"
                     print(jsonValues.std.getClass())
                     String test = jsonValues.std.join(" ")
