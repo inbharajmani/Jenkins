@@ -96,9 +96,7 @@ pipeline {
         stage ('test') {
             steps {
                 checkout scm
-                script {
-                    sh(script: "echo 'Hello from script'", label: null)
-                }
+                sh(script: "echo 'Hello from script'", label: null)
                 echo "testing"
             }
         }
