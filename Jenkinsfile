@@ -97,11 +97,11 @@ pipeline {
             steps {
                 checkout scm
                 script{
-                    Map jsonValues
-                    jsonValues = readJSON file: "test.json"
-                    print(jsonValues.std.getClass())
-                    String test = jsonValues.std.join(" ")
-                    print test
+                    sh "mkdir test"
+                    String build = "test"
+                    dir(build ?: WORKSPACE){
+                        sh "echo \$PWD"
+                    }
                 }
                 echo "testing"
             }
