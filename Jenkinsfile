@@ -1,9 +1,5 @@
 // @Library('coverity_shared_lib@main') _
 
-def formattedDate = new Date(currentBuild.timeInMillis).format("HH-mm-ss-yyyy-MM-dd")
-
-echo "Formatted timestamp: $formattedDate"
-
 
 pipeline {
     // agent any
@@ -100,6 +96,9 @@ pipeline {
         stage ('test') {
             steps {
                 checkout scm
+                script {
+                    sh(script: "echo 'Hello from script'", label: null)
+                }
                 echo "testing"
             }
         }
@@ -113,26 +112,10 @@ pipeline {
                     //                             ]){
                     //                                 sh "echo '${COVERITY_PASSWORD}'"
                     //                             }
-                    sh "git remote show origin | grep HEAD"
-                    sh "git rev-parse --abbrev-ref HEAD"
-                    def a = 1
-                    def b = 4
-                    def c = 2
-                    if (a == 1 && b == 4 && c == 3){
-                        print "yes"
-                    }
-                    if (env.BRANCH_NME == "null"){
-                        print "yes"
-                    }
                 }
 
                 // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
             }
         }
     }
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: 'coverity_output/**/*'
-    //     }
-    // }
 }
