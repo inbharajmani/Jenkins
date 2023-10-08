@@ -96,24 +96,26 @@ pipeline {
         stage ('test') {
             steps {
                 checkout scm
-                sh(script: "echo 'Hello from script'", label: null)
+                script{
+                    sh(script: "echo 'Hello from script'", label: null)
+                }
                 echo "testing"
             }
         }
-        stage ('package') {
-            steps {
-                script {
-                    // withCredentials([usernamePassword(
-                    //                             credentialsId: 'coverity-ccf-user',
-                    //                             usernameVariable: 'COVERITY_USERNAME',
-                    //                             passwordVariable: 'COVERITY_PASSWORD')
-                    //                             ]){
-                    //                                 sh "echo '${COVERITY_PASSWORD}'"
-                    //                             }
-                }
+        // stage ('package') {
+        //     steps {
+        //         script {
+        //             // withCredentials([usernamePassword(
+        //             //                             credentialsId: 'coverity-ccf-user',
+        //             //                             usernameVariable: 'COVERITY_USERNAME',
+        //             //                             passwordVariable: 'COVERITY_PASSWORD')
+        //             //                             ]){
+        //             //                                 sh "echo '${COVERITY_PASSWORD}'"
+        //             //                             }
+        //         }
 
-                // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
-            }
-        }
+        //         // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
+        //     }
+        // }
     }
 }
