@@ -97,9 +97,9 @@ pipeline {
             steps {
                 checkout scm
                 script{
-                    String test = sh(script: ">&2 echo 'dumping error'", returnStdout: true)
+                    String test = sh(script: "dasd", returnStdout: true)
                     print(test)
-                    sh(">&2 echo 'dumping error'")
+                    sh("asdas")
                 }
                 echo "testing"
             }
