@@ -96,10 +96,11 @@ pipeline {
         stage ('test') {
             steps {
                 checkout scm
-                script{
-                    String test = sh(script: "python3 testenv.py", returnStdout: true).trim()
-                    print(test)
-                }
+                pwd()
+                // script{
+                //     // String test = sh(script: "python3 testenv.py", returnStdout: true).trim()
+                //     // print(test)
+                // }
                 echo "testing"
             }
         }
