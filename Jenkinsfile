@@ -97,11 +97,9 @@ pipeline {
             steps {
                 checkout scm
                 script{
-                    sh "mkdir test"
-                    String build = "test"
-                    dir(build ?: WORKSPACE){
-                        sh "echo \$PWD"
-                    }
+                    String test = sh(script: ">&2 echo 'dumping error'", returnStdout: true)
+                    print(test)
+                    sh(">&2 echo 'dumping error'")
                 }
                 echo "testing"
             }
