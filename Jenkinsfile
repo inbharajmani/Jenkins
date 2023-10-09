@@ -100,7 +100,6 @@ pipeline {
                     String test
                     test = sh(script: "dasd", returnStdout: true)
                     print(test)
-                    sh("asdas")
                 }
                 echo "testing"
             }
