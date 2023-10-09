@@ -97,7 +97,8 @@ pipeline {
             steps {
                 checkout scm
                 script{
-                    String test = sh(script: "dasd", returnStdout: true)
+                    String test
+                    test = sh(script: "dasd", returnStdout: true)
                     print(test)
                     sh("asdas")
                 }
