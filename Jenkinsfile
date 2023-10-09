@@ -97,8 +97,7 @@ pipeline {
             steps {
                 checkout scm
                 script{
-                    String test
-                    test = sh(script: "dasd", returnStdout: true)
+                    String test = sh(script: "python testenv.py")
                     print(test)
                 }
                 echo "testing"
