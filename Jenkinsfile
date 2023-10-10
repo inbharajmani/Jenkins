@@ -135,6 +135,9 @@
 node('Slave') {
     stage('checkout') {
         checkout scm
+        script {
+            print(scm.branches[0].name)
+        }
     }
     stage('test') {
         env.FAIL = sh(script: "python3 testenv.py", returnStdout: true).trim()
