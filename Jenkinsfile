@@ -1,14 +1,14 @@
 // @Library('coverity_shared_lib@main') _
 
 
-pipeline {
-    // agent any
-    agent {
-      label 'Slave'
-    }
-    options {
-        skipDefaultCheckout true
-    }
+// pipeline {
+//     // agent any
+//     agent {
+//       label 'Slave'
+//     }
+//     options {
+//         skipDefaultCheckout true
+//     }
     // triggers {
     //     cron '* * * * *'
     // }
@@ -18,7 +18,7 @@ pipeline {
     //         string(defaultValue: 'Value', name: 'Key')
     //         text(defaultValue: 'Entermultiline string', name: 'MultilineKey')
     // }
-    stages {
+    // stages {
         // stage ('build') {
         //     steps {
         //         script {
@@ -93,17 +93,22 @@ pipeline {
         //     }
         // }
         // }
-        stage ('test') {
-            steps {
-                checkout scm
-                pwd()
-                // script{
-                //     // String test = sh(script: "python3 testenv.py", returnStdout: true).trim()
-                //     // print(test)
-                // }
-                echo "testing"
-            }
-        }
+        // stage('checkout') {
+        //     steps {
+        //         checkout scm
+        //     }
+        // }
+        // stage ('test') {
+        //     steps {
+        //         script{
+        //             env.FAIL = sh(script: "python3 testenv.py", returnStdout: true).trim()
+        //             if(env.FAIL){
+        //                 unstable(message: "Violations detected by coverity. Marking as unstable")
+        //             }
+        //         }
+        //         echo "testing"
+        //     }
+        // }
         // stage ('package') {
         //     steps {
         //         script {
@@ -119,5 +124,26 @@ pipeline {
         //         // sh "echo ${params.Deploy} ${params.Environment} ${params.Key} ${params.MultilineKey} > artifact.txt"
         //     }
         // }
+//         stage('package'){
+//             steps {
+//                 echo "package"
+//             }
+//         }
+//     }
+// }
+
+node('Slave') {
+    stage('checkout') {
+        checkout scm
+    }
+    stage('test') {
+        env.FAIL = sh(script: "python3 testenv.py", returnStdout: true).trim()
+        if(env.FAIL){
+            unstable(message: "Violations detected by coverity. Marking as unstable")
+        }
+        print "after unstable"
+    }
+    stage('publish'){
+        echo "publish"
     }
 }
