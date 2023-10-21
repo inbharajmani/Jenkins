@@ -16,6 +16,14 @@ pipeline {
                 python --version
                 '''.stripIndent()
             }
+            stage("test") {
+                steps {
+                    sh '''whoami
+                        hostname
+                        python --version
+                        '''.stripIndent()
+                }
+            }
         }
     }
     post {
