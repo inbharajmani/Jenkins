@@ -1,12 +1,14 @@
 pipeline {
     agent {
         label "Slave"
-        docker {
-            image "python"
-        }
     }
     stages {
         stage("echo") {
+            agent {
+                docker {
+                    image "python"
+                }
+            }
             steps {
                 sh '''whoami
                 hostname
