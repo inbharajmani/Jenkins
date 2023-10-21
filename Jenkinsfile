@@ -1,31 +1,23 @@
-// pipeline {
-//     agent none
-//     stages {
-//         stage("echo") {
-//             steps {
-//                 sh '''whoami
-//                 hostname
-//                 '''.stripIndent()
-//             }
-//         }
-//     }
-//     post {
-//         always {
-//             cleanWs()
-//         }
-//     }
-// }
-node {
-    try {
-        stage("checkout") {
-            checkout scm
+pipeline {
+    agent {
+        label "Slave"
+        docker {
+            image "python"
         }
+    }
+    stages {
         stage("echo") {
-            sh '''whoami
+            steps {
+                sh '''whoami
                 hostname
+                python --version
                 '''.stripIndent()
+            }
         }
-    } finally {
-        cleanWs()
+    }
+    post {
+        always {
+            cleanWs()
+        }
     }
 }
