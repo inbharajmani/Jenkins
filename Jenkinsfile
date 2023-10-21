@@ -1,17 +1,31 @@
-pipeline {
-    agent none
-    stages {
+// pipeline {
+//     agent none
+//     stages {
+//         stage("echo") {
+//             steps {
+//                 sh '''whoami
+//                 hostname
+//                 '''.stripIndent()
+//             }
+//         }
+//     }
+//     post {
+//         always {
+//             cleanWs()
+//         }
+//     }
+// }
+node {
+    try {
+        stage("checkout") {
+            checkout scm
+        }
         stage("echo") {
-            steps {
-                sh '''whoami
+            sh '''whoami
                 hostname
                 '''.stripIndent()
-            }
         }
-    }
-    post {
-        always {
-            cleanWs()
-        }
+    } finally {
+        cleanWs()
     }
 }
