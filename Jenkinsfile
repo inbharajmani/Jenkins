@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label "Slave"
-    }
+    agent none
     stages {
         stage("echo") {
             steps {
