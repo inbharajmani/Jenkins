@@ -15,14 +15,14 @@ pipeline {
                 hostname
                 python --version
                 '''.stripIndent()
-            }
-            stage("test") {
+                stage("test") {
                 steps {
                     sh '''whoami
                         hostname
                         python --version
                         '''.stripIndent()
                 }
+            }
             }
         }
     }
