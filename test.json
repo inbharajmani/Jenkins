@@ -1,5 +1,5 @@
 {
     "name": "inbha",
     "std": ["std11","12","13"],
-    "release": true
+    "release": false
 }

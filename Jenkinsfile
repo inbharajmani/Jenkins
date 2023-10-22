@@ -1,28 +1,18 @@
 pipeline {
     agent {
-        label "Slave"
+        docker {
+            image "python"
+            label "Slave"
+        }
     }
     stages {
         stage("echo") {
-            agent {
-                docker {
-                    image "python"
-                    reuseNode true
-                }
-            }
             steps {
                 sh '''whoami
                 hostname
                 python --version
                 '''.stripIndent()
-                stage("test") {
-                steps {
-                    sh '''whoami
-                        hostname
-                        python --version
-                        '''.stripIndent()
-                }
-            }
+                
             }
         }
     }
