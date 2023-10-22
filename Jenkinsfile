@@ -13,15 +13,12 @@ pipeline {
                 python --version
                 '''.stripIndent()
                 script {
-                    def jsonValues = readJSON(file: "test.json")
-                    assert jsonValues.release == false
-                    assert jsonValues.release instanceof Boolean
-                    if (jsonValues.release) {
-                        print("Fucked up")
-                    }
-                    else {
-                        print("Working. it is false value")
-                    }
+                    def jsonValues1 = readJSON(file: "test.json", returnPojo: true)
+                    print(jsonValues1.getClass())
+                    print(jsonValues1.std.join(","))
+                    def jsonValues2 = readJSON(file: "test.json")
+                    print(jsonValues2.getClass())
+                    print(jsonValues2.std.join(","))
                 }
             }
         }
