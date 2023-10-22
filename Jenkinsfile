@@ -17,10 +17,10 @@ pipeline {
                     assert jsonValues.release == false
                     assert jsonValues.release instanceof Boolean
                     if (jsonValues.release) {
-                        printf("Fucked up")
+                        print("Fucked up")
                     }
                     else {
-                        printf("Working. it is false value")
+                        print("Working. it is false value")
                     }
                 }
             }
