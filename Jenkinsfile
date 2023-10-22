@@ -12,9 +12,11 @@ pipeline {
                 hostname
                 python --version
                 '''.stripIndent()
-                def jsonValues = readJSON(file: "test.json")
-                assert jsonValues == false
-                assert jsonValues instanceof Boolean
+                script {
+                    def jsonValues = readJSON(file: "test.json")
+                    assert jsonValues == false
+                    assert jsonValues instanceof Boolean
+                }
             }
         }
     }
