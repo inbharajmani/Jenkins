@@ -14,8 +14,8 @@ pipeline {
                 '''.stripIndent()
                 script {
                     def jsonValues = readJSON(file: "test.json")
-                    assert jsonValues == false
-                    assert jsonValues instanceof Boolean
+                    assert jsonValues.release == false
+                    assert jsonValues.release instanceof Boolean
                 }
             }
         }
