@@ -1,31 +1,38 @@
 pipeline {
     agent {
-        docker {
-            image "python"
-            label "Slave"
-        }
+        label "Slave"
     }
     stages {
         stage("echo") {
             steps {
                 sh '''whoami
                 hostname
-                python --version
                 '''.stripIndent()
-                script {
-                    def jsonValues1 = readJSON(file: "test.json", returnPojo: true)
-                    print(jsonValues1.getClass())
-                    print(jsonValues1.std.join(","))
-                    def jsonValues2 = readJSON(file: "test.json")
-                    print(jsonValues2.getClass())
-                    print(jsonValues2.std.join(","))
+            }
+        }
+        stage("unstable") {
+            steps {
+                catchError(buildResult: "SUCCESS", stageResult: "UNSTABLE") {
+                    error "unstabling"
                 }
+            }
+        }
+        stage("exit") {
+            steps {
+                error "next error"
+            }
+        }
+        stage("after error") {
+            steps {
+                echo "hi after error"
             }
         }
     }
     post {
-        always {
-            cleanWs()
+        stage("cleanup") {
+            always {
+                cleanWs()
+            }
         }
     }
-}
+} 
